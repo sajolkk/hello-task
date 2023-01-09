@@ -6,6 +6,7 @@
   <title>Hello Task</title>
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @stack('css')
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 @auth    
@@ -15,7 +16,7 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
             </ul>
             <!-- Right navbar links -->
@@ -30,6 +31,9 @@
                         onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
+                        </a>
+                        <a class="dropdown-item" href="{{ route('profile') }}">
+                            {{ __('Profile') }}
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -58,11 +62,28 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ route('company.index') }}" class="nav-link">
-                            <i class="far fa-building nav-icon"></i>
-                            <p>Company</p>
+                    <li class="nav-item {{ Request::is('company/*')? 'menu-open':''}}">
+                        <a href="#" class="nav-link {{ Request::is('company/*')? 'active':''}}">
+                          <i class="nav-icon fas fa-building"></i>
+                          <p>
+                            Company
+                            <i class="right fas fa-angle-left"></i>
+                          </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                          <li class="nav-item">
+                            <a href="{{ route('company.create') }}" class="nav-link {{ Request::is('company/*')? 'create':''}}">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Create New Company</p>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="{{ route('company.index') }}" class="nav-link {{ Request::is('company/index')? 'active':''}}">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Company List</p>
+                            </a>
+                          </li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('employee.index') }}" class="nav-link">
@@ -80,17 +101,17 @@
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <div class="content-header">
-            <div class="container-fluid">
-                @yield('breadcrumb')        
-            </div><!-- /.container-fluid -->
+                <div class="container-fluid">
+                    @yield('breadcrumb')        
+                </div><!-- /.container-fluid -->
             </div>
             <!-- /.content-header -->
 
             <!-- Main content -->
             <section class="content">
-            <div class="container-fluid">
-                @yield('content')        
-            </div><!--/. container-fluid -->
+                <div class="container-fluid">
+                    @yield('content')        
+                </div><!--/. container-fluid -->
             </section>
             <!-- /.content -->
         </div>
@@ -109,8 +130,6 @@
         @yield('content')
     </div>
 @endauth
-<script type="module" >
-    
-</script>
+@stack('js')
 </body>
 </html>
