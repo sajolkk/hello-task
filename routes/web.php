@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function(){
     // profile route end
 
     Route::get('password/change', [HomeController::class, 'passwordChangeForm'])->name(('password.change'));
-    Route::put('password/update', [HomeController::class, 'passwordUpdate'])->name(('password.update'));
+    Route::put('password/change', [HomeController::class, 'passwordUpdate'])->name(('password.change'));
     
     // company route start here
     Route::resource('company',CompanyController::class);

@@ -2,12 +2,12 @@
 @section('breadcrumb')
     <div class="row mb-2">            
         <div class="col-sm-6">
-            <h1 class="m-0">New Company Create</h1>
+            <h5 class="m-0">New Company Create</h5>
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Company</li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+            <li class="breadcrumb-item ">Company</li>
             <li class="breadcrumb-item active">New Company Create</li>
             </ol>
         </div>
@@ -43,19 +43,20 @@
                     @endif
                 </div>
                 <div class="form-group">
-                    <label for="logo">Company Logo:</label>
-                    <input type="file" name="logo" class="form-control" id="logo" value="{{ old('logo') }}">
-                    @if($errors->has('logo'))
-                        <span class="text-danger" >{{ $errors->first('logo') }}</span>
-                    @endif
-                </div>
-                <div class="form-group">
                     <label for="website">Company Website:</label>
                     <input type="text" name="website" class="form-control" value="{{ old('website') }}" id="website" placeholder="www.hellotask.app">
                     @if($errors->has('website'))
                         <span class="text-danger" >{{ $errors->first('website') }}</span>
                     @endif
                 </div>
+                <div class="form-group">
+                    <label for="logo">Company Logo:</label>
+                    <input type="file" name="logo" class="form-control" id="logo" value="{{ old('logo') }}">
+                    @if($errors->has('logo'))
+                        <span class="text-danger" >{{ $errors->first('logo') }}</span>
+                    @endif
+                </div>
+                
                 <div class="form-group mt-2 text-end">
                     <button type="reset" class="btn btn-danger">Reset</button>
                     <button type="submit" class="btn btn-primary">Save</button>

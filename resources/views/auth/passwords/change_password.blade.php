@@ -28,7 +28,7 @@
                 @endif
 
                 <div class="card-body">
-                    <form action="{{ route('password.update') }}" method="post">
+                    <form action="{{ route('password.change') }}" method="post">
                         @csrf
                         @method('PUT')
                         <div class="form-group mb-2">

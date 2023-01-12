@@ -21,13 +21,15 @@ import './../assets/datatables/js/dataTables.buttons.min.js';
 import './../assets/datatables/js/jszip.min.js';
 import './../assets/datatables/js/buttons.html5.min.js';
 
-// import './../assets/custom.js';
+import './custom.js';
 
-import $ from 'jquery';
-window.$ = $;
+// import $ from 'jquery';
+// window.$ = $;
 
 // import DataTable from 'datatables.net';
-// // import DataTable from 'datatables.net-buttons';
+// import DataTable from 'datatables.net-buttons';
 // window.DataTable = DataTable;
+
+
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CompanyRequest extends FormRequest
@@ -26,17 +27,17 @@ class CompanyRequest extends FormRequest
         switch ($this->method()) {
             case 'POST':
                 return [
-                    'name' => 'required|max:255',
-                    'email' => 'email|unique:companies|max:255',
-                    'logo' => 'mimes:jpeg,png,jpg|max:2048' //maximum 2mb
+                    'name' => ['required','max:255'],
+                    'email' => ['nullable','email','unique:companies','max:255'],
+                    'logo' => ['mimes:jpeg,png,jpg'] 
                 ];
                 break;
             case 'PUT':
             case 'PATCH':
                 return [
-                    'name' => 'required|max:255',
-                    'email' => 'email|unique:companies|max:255',
-                    'logo' => 'mimes:jpeg,png,jpg|size:2048' //maximum 2mb
+                    'name' => ['required','max:255'],
+                    'email' => ['nullable','email','max:255',Rule::unique('companies','email')->ignore($this->route('company'))],
+                    // 'logo' => ['nullable','mimes:jpeg,png,jpg'] 
                 ];
             default:
                 # code...

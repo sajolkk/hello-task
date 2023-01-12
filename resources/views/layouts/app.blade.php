@@ -3,12 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="_token" content="{{ csrf_token() }}">
   <title>Hello Task</title>
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @stack('css')
 </head>
-<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed ">
 @auth    
     <div class="wrapper">
         <!-- Navbar -->
@@ -88,11 +89,28 @@
                           </li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ route('employee.index') }}" class="nav-link">
-                            <i class="fa fa-users nav-icon"></i>
-                            <p>Employee</p>
+                    <li class="nav-item {{ Request::is('employee/*')? 'menu-open':''}}">
+                        <a href="#" class="nav-link {{ Request::is('employee/*')? 'active':''}}">
+                          <i class="nav-icon fas fa-users"></i>
+                          <p>
+                            Employee
+                            <i class="right fas fa-angle-left"></i>
+                          </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                          <li class="nav-item">
+                            <a href="{{ route('employee.create') }}" class="nav-link {{ Request::is('employee/*')? 'create':''}}">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Create New Employee</p>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="{{ route('employee.index') }}" class="nav-link {{ Request::is('employee/index')? 'active':''}}">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Employee List</p>
+                            </a>
+                          </li>
+                        </ul>
                     </li>
                 </ul>
             </nav>
