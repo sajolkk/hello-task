@@ -17,8 +17,9 @@
         <div class="col-md-12">
             <div class="card">
             <!-- /.card-header -->
-            <div class="card-body">
+            <div class="card-body text-center">
                 <h4>Welcome to hello task :)</h4>
+                <h4>You login as a {{ auth::user()->role }}</h4>
             </div>
             </div>
             <!-- /.card -->

@@ -58,7 +58,7 @@
             <!-- Sidebar -->
             <div class="sidebar">
             <!-- Sidebar Menu -->
-            <nav class="mt-2">
+            <nav class="mt-2 " >
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item ">
                         <a href="{{ route('home') }}" class="nav-link {{ Request::is('/')? 'active':'' }}">
@@ -66,8 +66,8 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li class="nav-item {{ Request::is('company/*')? 'menu-open':''}}">
-                        <a href="#" class="nav-link {{ Request::is('company/*')? 'active':''}}">
+                    <li class="nav-item {{ Request::is('company*')? 'menu-open':''}}">
+                        <a href="#" class="nav-link {{ Request::is('company*')? 'active':''}}">
                           <i class="nav-icon fas fa-building"></i>
                           <p>
                             Company
@@ -76,21 +76,21 @@
                         </a>
                         <ul class="nav nav-treeview">
                           <li class="nav-item">
-                            <a href="{{ route('company.create') }}" class="nav-link {{ Request::is('company/*')? 'create':''}}">
+                            <a href="{{ route('company.create') }}" class="nav-link {{ Request::is('company/create')? 'active':''}}">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Create New Company</p>
                             </a>
                           </li>
                           <li class="nav-item">
-                            <a href="{{ route('company.index') }}" class="nav-link {{ Request::is('company/index')? 'active':''}}">
+                            <a href="{{ route('company.index') }}" class="nav-link {{ Request::is('company')? 'active':''}}">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Company List</p>
                             </a>
                           </li>
                         </ul>
                     </li>
-                    <li class="nav-item {{ Request::is('employee/*')? 'menu-open':''}}">
-                        <a href="#" class="nav-link {{ Request::is('employee/*')? 'active':''}}">
+                    <li class="nav-item {{ Request::is('employee*')? 'menu-open':''}}">
+                        <a href="#" class="nav-link {{ Request::is('employee*')? 'active':''}}">
                           <i class="nav-icon fas fa-users"></i>
                           <p>
                             Employee
@@ -99,13 +99,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                           <li class="nav-item">
-                            <a href="{{ route('employee.create') }}" class="nav-link {{ Request::is('employee/*')? 'create':''}}">
+                            <a href="{{ route('employee.create') }}" class="nav-link {{ Request::is('employee/create')? 'active':''}}">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Create New Employee</p>
                             </a>
                           </li>
                           <li class="nav-item">
-                            <a href="{{ route('employee.index') }}" class="nav-link {{ Request::is('employee/index')? 'active':''}}">
+                            <a href="{{ route('employee.index') }}" class="nav-link {{ Request::is('employee')? 'active':''}}">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Employee List</p>
                             </a>
